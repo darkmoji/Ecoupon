@@ -1,0 +1,64 @@
+<ion-header>
+  <ion-toolbar color="fff" id="toolbar1">
+    <ion-title>ค้นหาร้านค้า</ion-title>
+    <ion-buttons end>
+
+      <button ion-button icon-only (click)="map()">
+        <ion-icon name="map" color="bluee"></ion-icon>
+      </button>
+  
+      <button ion-button icon-only (click)="notice()">
+        <ion-icon name="notifications" color="secondary"></ion-icon>
+        <ion-badge color="danger" *ngIf="unread">{{unread}}</ion-badge>
+      </button>
+
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-searchbar
+    [(ngModel)]="myInput"
+    [showCancelButton]="shouldShowCancel"
+    (ionInput)="onInput($event)"
+    (ionCancel)="onCancel($event)">
+  </ion-searchbar>
+
+  <ion-list *ngIf="showList">
+    <ion-item *ngFor="let item of items" (click)="showItem(item)">
+      {{ item.name }}
+    </ion-item>
+  </ion-list>
+
+  <ion-list *ngIf="showList==null&&myInput">
+
+    <ion-item *ngFor="let i of itemDetail" (click)="showDetail(i)">
+      <ion-avatar item-start>
+        <img [src]="i.logo">
+      </ion-avatar>
+      <h2>{{i.name}}</h2>
+      <ion-buttons item-end id="btn">
+        <ion-icon name="pricetag" color="secondary" *ngIf="i.check1 == 1"></ion-icon>
+        <ion-icon><img src="assets/icon/stamp.png" *ngIf="i.check2 == 1"></ion-icon>
+        <ion-icon name="contacts" color="secondary" *ngIf="i.check3 == 1"></ion-icon>
+      </ion-buttons>
+    </ion-item>
+
+  </ion-list>
+
+  <ion-list *ngIf="shop&&!myInput">
+
+    <ion-item *ngFor="let s of shop" (click)="showDetail(s)">
+      <ion-avatar item-start>
+        <img [src]="s.logo">
+      </ion-avatar>
+      <h2>{{s.name}}</h2>
+      <ion-buttons item-end id="btn">
+        <ion-icon name="pricetag" color="secondary" *ngIf="s.check1 == 1"></ion-icon>
+        <ion-icon><img src="assets/icon/stamp.png" *ngIf="s.check2 == 1"></ion-icon>
+        <ion-icon name="contacts" color="secondary" *ngIf="s.check3 == 1"></ion-icon>
+      </ion-buttons>
+    </ion-item>
+
+  </ion-list>
+</ion-content>

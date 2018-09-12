@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-navbar color="secondary">
+    <ion-title>ประเภทร้านค้า</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <ion-list *ngIf="typeshop">
+    <button ion-item *ngFor="let t of typeshop" (click)="action(t)">
+      {{ t.name }}
+      <ion-badge item-end *ngIf="t.status==1" color="danger">active</ion-badge>
+      <ion-badge item-end color="gray" *ngIf="t.status==2">inactive</ion-badge>
+    </button>
+  </ion-list>
+
+  <ion-fab (click)="showAdd()">
+    <button ion-fab color="danger"><ion-icon name="add"></ion-icon></button>
+  </ion-fab>
+
+</ion-content>

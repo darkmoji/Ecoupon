@@ -1,0 +1,134 @@
+<ion-header>
+  <ion-toolbar color="fff" id="toolbar1">
+    <ion-title>โปรโมชั่น</ion-title>
+    <ion-buttons end> 
+      <button ion-button icon-only (click)="notice()">
+        <ion-icon name="notifications" color="secondary"></ion-icon>
+        <ion-badge color="danger" *ngIf="unread">{{unread}}</ion-badge>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-searchbar
+    [(ngModel)]="myInput"
+    [showCancelButton]="shouldShowCancel"
+    (ionInput)="onInput($event)"
+    (ionCancel)="onCancel($event)">
+  </ion-searchbar>
+
+  <ion-list *ngIf="showList">
+    <ion-item *ngFor="let item of items" (click)="showItem(item)">
+      {{ item.name }}
+    </ion-item>
+  </ion-list>
+
+  <ion-list *ngIf="showList==null&&myInput">
+    <ion-item *ngFor="let i of itemDetail" (click)="showDetail(i)">
+      <ion-thumbnail item-start>
+        <img [src]="i.image">
+      </ion-thumbnail>
+      <h2>{{i.name_shop}}</h2>
+      <h2>{{i.name}}</h2>
+    </ion-item>
+  </ion-list>
+  
+  <ion-toolbar no-border-top color="fff" id="toolbar2" *ngIf="!myInput">
+    <ion-segment [(ngModel)]="type" ion-selected>
+      <ion-segment-button value="1">
+        คูปอง
+      </ion-segment-button>
+      <ion-segment-button value="2">
+        บัตรสะสมแต้ม
+      </ion-segment-button>
+      <ion-segment-button value="3">
+        โปรโมชั่นสมาชิก
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
+
+  <div [ngSwitch]="type" *ngIf="promo&&!myInput">
+    <div *ngFor="let t of typepromo">
+
+      <div *ngIf="t.id_type_promo!=3">
+        <ion-list *ngSwitchCase="t.id_type_promo">
+          <ion-list *ngIf="(promo[t.id_type_promo] == null)&&(checkLoad == 2)" id="not_f">
+            <h1>ไม่พบข้อมูล</h1>
+          </ion-list>
+          <ion-card id="card1" *ngFor="let p of promo[t.id_type_promo]" (click)="showDetail(p)">
+            <div id="box1">
+              <ion-thumbnail item-start>
+                <img [src]="p.logo">
+              </ion-thumbnail>
+            </div>
+            <div id="box2">
+              <img [src]="p.image">
+              <div id="box2_1" padding>
+                <h1>{{p.name_shop}}</h1>
+                <h2>{{p.name}}</h2>
+              </div>
+            </div>
+          </ion-card>
+        </ion-list>
+      </div>
+
+      <div *ngIf="t.id_type_promo==3">
+        <ion-list *ngSwitchCase="t.id_type_promo">
+
+          <ion-list *ngIf="(promo[t.id_type_promo] == null)&&(checkLoad == 2)" id="not_f">
+            <h1>ไม่พบข้อมูล</h1>
+          </ion-list>
+          
+          <ion-card id="card2" *ngFor="let p of promo[t.id_type_promo]">
+            <div id="box3">
+              <img [src]="p.image">
+            </div>
+            <div id="box4">
+              <div id="box4_1">
+                <h2 style="font-weight: bolder;">{{p.name_reward}}</h2>
+                <p>{{p.name_shop}}</p>
+              </div>
+              <div id="box4_2">
+                <div *ngIf="p.check_mem==1">
+                  <img src="assets/icon/coin2.png" style="width: 20px;">
+                  <h3>{{p.max_point}}</h3>
+                  <button ion-button (click)="conUsePoint(p)" round color="danger" *ngIf="p.check_sum==1">
+                    <span ion-text>แลกแต้ม</span>
+                    <!-- <ion-icon name="md-close" showWhen="android,windows"></ion-icon> -->
+                  </button>
+                  <button ion-button round color="gray" *ngIf="p.check_sum==0">
+                    <span ion-text>แลกแต้ม</span>
+                    <!-- <ion-icon name="md-close" showWhen="android,windows"></ion-icon> -->
+                  </button>
+                </div>
+                <div *ngIf="p.check_mem==0">
+                  <button ion-button (click)="member(p)" round color="danger" id="btn_reg">
+                    <span ion-text>สมัครสมาชิก</span>
+                    <!-- <ion-icon name="md-close" showWhen="android,windows"></ion-icon> -->
+                  </button>
+                </div>
+              </div>
+              <p style="font-size: 12px;text-align: center;">หมดเขต: {{p.end_date}}</p>
+            </div>
+          </ion-card>
+        </ion-list>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- <div [ngSwitch]="type" *ngIf="promo&&!myInput">
+    <div *ngFor="let t of typepromo">
+      <ion-list *ngSwitchCase="t.id_type_promo">
+        <ion-item *ngFor="let p of promo[t.id_type_promo]" (click)="showDetail(p)">
+          <ion-thumbnail item-start>
+            <img [src]="p.image">
+          </ion-thumbnail>
+          <h2>{{p.name_shop}}</h2>
+          <h2>{{p.name}}</h2>
+        </ion-item>
+      </ion-list>
+    </div>
+  </div> -->
+</ion-content>

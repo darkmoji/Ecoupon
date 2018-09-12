@@ -1,0 +1,65 @@
+<ion-header>
+  <ion-navbar>
+    <div class="toolbar-background" style="background-color: #FBA94C !important;"></div>
+  </ion-navbar>
+</ion-header>
+
+<div id="tab1" *ngIf="shop">
+  <ion-grid>
+    <ion-row align-items-start>
+      <ion-col></ion-col>
+      <ion-col col-auto>
+        <div id="logo">
+          <ion-avatar item-start>
+            <img [src]="shop.logo">
+          </ion-avatar>
+        </div>
+      </ion-col>
+      <ion-col></ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <div id="tab2">
+    <h3>{{shop.name}}</h3>
+    <h6>{{shop.type}}</h6>
+  </div>
+</div>
+
+<ion-content>
+  <div id="tab3" *ngIf="shop">
+  </div>
+
+  <ion-card *ngIf="shop">
+    <ion-card-header>
+      เกี่ยวกับ
+    </ion-card-header>
+    <div style="margin-left:10px;">
+      <div style="margin-left:20px;margin-bottom:10px;">
+        <h2 style="display:inline;"> {{shop.address}}</h2><br><br>
+        <ion-icon name="call"><h2 style="display:inline;"> {{shop.tel}}</h2></ion-icon><br>
+        <ion-icon name="mail"><h2 style="display:inline;"> {{shop.email}}</h2></ion-icon> 
+      </div>
+    </div>
+  </ion-card>
+  
+  <ion-card *ngIf="branchs">
+    <ion-card-header>
+      สาขา
+    </ion-card-header>
+    <div id="box_branch">
+      <div *ngFor="let b of branchs" style="margin-left:10px;">
+        <h3 style="font-weight:bolder;">{{b.name}}</h3>
+        <div style="margin-left:10px;">
+          <p style="display:inline;"> {{b.address}}</p><br>
+          <ion-icon name="call"><p style="display:inline;"> {{b.tel}}</p></ion-icon><br>
+          <ion-icon name="mail"><p style="display:inline;"> {{b.email}}</p></ion-icon> 
+        </div>
+      </div>
+    </div>
+  </ion-card>
+
+</ion-content>
+
+<!-- <ion-card-content *ngFor="let b of branchs">
+    {{b.name}}
+  </ion-card-content> -->

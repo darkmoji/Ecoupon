@@ -1,0 +1,97 @@
+// http://ionicframework.com/docs/theming/
+
+
+// App Global Sass
+// --------------------------------------------------
+// Put style rules here that you want to apply globally. These
+// styles are for the entire app and not just one component.
+// Additionally, this file can be also used as an entry point
+// to import other Sass files to be included in the output CSS.
+//
+// Shared Sass variables, which can be used to adjust Ionic's
+// default Sass variables, belong in "theme/variables.scss".
+//
+// To declare rules for a specific mode, create a child rule
+// for the .md, .ios, or .wp mode classes. The mode class is
+// automatically applied to the <body> element in the app.
+.alertCustomCss{
+    .alert-checkbox-label{
+        white-space: normal;
+    }
+}
+.alertPointCss{
+    .alert-wrapper{
+        border-radius: 10px !important;
+    }
+    .alert-head{
+        border-top-right-radius: 10px;
+        border-top-left-radius: 10px;
+    }
+    .alert-button-group{
+        justify-content: center;
+        padding: 8px 8px 8px 8px;
+    }
+    .alert-sub-title{
+        white-space: pre-line;
+    }
+}
+.alertChoiceCss{
+    .alert-wrapper{
+        border-radius: 10px !important;
+    }
+    .alert-head{
+        border-top-right-radius: 10px;
+        border-top-left-radius: 10px;
+    }
+    .alert-button-group{
+        padding: 0px;
+        margin-right: -0.55px;
+        flex-wrap: wrap !important;
+    }
+    .button-inner{
+        justify-content: center !important; 
+    }
+    .alert-button{
+        margin: 0;
+        text-align: unset !important;
+        border-radius: 0px;
+        min-width: 50%;
+        flex: 1 1 auto;
+        -webkit-box-flex: 1;
+        border-top: 0.55px solid #dbdbdf;
+        border-right: 0.55px solid #dbdbdf;
+    }
+}
+.alertChoice2Css{
+    .alert-wrapper{
+        border-radius: 10px !important;
+        position: absolute;
+        top: 30%;
+        transform: translateY(-50%);
+    }
+    .alert-head{
+        border-top-right-radius: 10px;
+        border-top-left-radius: 10px;
+    }
+    .alert-button-group{
+        padding: 0px;
+        margin-right: -0.55px;
+        flex-wrap: wrap !important;
+    }
+    .button-inner{
+        justify-content: center !important; 
+    }
+    .alert-button{
+        margin: 0;
+        text-align: unset !important;
+        border-radius: 0px;
+        min-width: 50%;
+        flex: 1 1 auto;
+        -webkit-box-flex: 1;
+        border-top: 0.55px solid #dbdbdf;
+        border-right: 0.55px solid #dbdbdf;
+    }
+    ion-alert.alert-top{
+        padding-top: unset;
+    }
+}

@@ -1,0 +1,118 @@
+<ion-header>
+  <ion-toolbar color="fff" id="toolbar1">
+    <ion-title>บัตรของฉัน</ion-title>
+    <ion-buttons end>
+
+      <button ion-button icon-only (click)="showCard()">
+        <ion-icon name="person" color="bluee"></ion-icon>
+      </button>   
+  
+      <button ion-button icon-only (click)="notice()">
+        <ion-icon name="notifications" color="secondary"></ion-icon>
+        <ion-badge color="danger" *ngIf="unread">{{unread}}</ion-badge>
+      </button>
+
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content padding>
+  <ion-toolbar no-border-top color="fff" id="toolbar2">
+    <ion-segment [(ngModel)]="type" ion-selected>
+      <!-- <ion-segment-button value="0">
+        ทั้งหมด
+      </ion-segment-button> -->
+      <ion-segment-button value="1">
+        คูปอง
+      </ion-segment-button>
+      <ion-segment-button value="2">
+        บัตรสะสมแต้ม
+      </ion-segment-button>
+      <ion-segment-button value="3">
+        โปรโมชั่นสมาชิก
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
+
+  <div [ngSwitch]="type" *ngIf="mypromoAll">
+    <!-- <div>
+      <ion-list *ngSwitchCase="0">
+        <ion-card id="card1" *ngFor="let m of mypromoAll" (click)="showDetail(m)">
+          <div id="box1">
+            <ion-thumbnail item-start>
+              <img [src]="m.logo">
+            </ion-thumbnail>
+          </div>
+          <div id="box2">
+            <img [src]="m.image">
+            <div id="box2_1" padding>
+              <h1>{{m.name_shop}}</h1>
+              <h2>{{m.name}}</h2>
+            </div>
+          </div>
+        </ion-card>
+      </ion-list>
+    </div> -->
+
+    <div *ngFor="let t of typepromo">
+      <ion-list *ngSwitchCase="t.id_type_promo">
+        <ion-list *ngIf="(mypromo[t.id_type_promo] == null) && (t.id_type_promo != 3)" id="not_f">
+          <h1>ไม่พบข้อมูล</h1>
+        </ion-list>
+
+        <ion-card id="card1" *ngFor="let m of mypromo[t.id_type_promo]" (click)="showDetail(m)">
+          <div id="box1">
+            <ion-thumbnail item-start>
+              <img [src]="m.logo">
+            </ion-thumbnail>
+          </div>
+          <div id="box2">
+            <img [src]="m.image">
+            <div id="box2_1" padding>
+              <h1>{{m.name_shop}}</h1>
+              <h2>{{m.name}}</h2>
+            </div>
+          </div>
+        </ion-card>
+      </ion-list>
+    </div>
+
+    <div>
+      <ion-list *ngSwitchCase="3">
+        <ion-item *ngFor="let m of member">
+          <ion-avatar item-start>
+            <img [src]="m.logo">
+          </ion-avatar>
+          <h2>{{m.name}}</h2>
+          <div id="point" item-end>
+            <ion-grid>
+              <ion-row>
+                <ion-col></ion-col>
+                <ion-col col-auto>
+                  <h1>{{m.point}}</h1>
+                </ion-col>
+                <ion-col></ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col></ion-col>
+                <ion-col col-auto>
+                  <p>point</p>
+                </ion-col>
+                <ion-col></ion-col>
+              </ion-row>
+            </ion-grid>
+            <!-- <h1>{{m.point}}</h1>
+            <p>point</p> -->
+          </div>
+          <!-- <ion-buttons item-end id="btn">
+            <ion-icon name="pricetag" color="secondary" *ngIf="s.check1 == 1"></ion-icon>
+          </ion-buttons> -->
+        </ion-item>
+      </ion-list>
+    </div>
+
+  </div>
+
+
+</ion-content>

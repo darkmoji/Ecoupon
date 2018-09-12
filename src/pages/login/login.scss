@@ -1,0 +1,44 @@
+page-login {
+    ion-spinner * {
+        width: 28px;
+        height: 28px;
+        stroke: #444;
+        fill: #222;
+      }
+    #login-bg{
+        background-image: linear-gradient(50deg,#FBA94C,#FEDA85,#B0D7E8,#688DBE);
+        background-size: 400% 400%;
+        animation: colorchange 15s ease-out infinite;
+
+        @keyframes colorchange{
+            0%{background-position: 0% 99%}
+            50%{background-position: 100% 1%}
+            100%{background-position: 10% 90%}
+        }
+    }
+    .scroll-content{
+        text-align: center;
+        overflow: unset;
+    }
+    ion-card.card{
+        background: rgba(232, 230, 230, 0.6px);
+        border-radius: 10px;
+    }
+    .item{
+        background: rgba(232, 230, 230, 0px);
+    }
+    ion-input{
+        border-bottom: #BE381E solid 1px;
+    }
+    h1{
+        color: #fff;
+        font-size: 3em;
+        font-weight: bold;
+    }
+    #ec{
+        margin-top: 20%;
+    }
+    .item-md{
+        padding-left: unset;
+    }
+}

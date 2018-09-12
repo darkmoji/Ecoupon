@@ -1,0 +1,69 @@
+<ion-header>
+
+  <ion-navbar color="bluee">
+    <ion-title>สมัครสมาชิก</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+    <form [formGroup]="regisForm" (ngSubmit)="signup()">
+      <ion-item>
+        <ion-label floating>ชื่อผู้ใช้งาน</ion-label>
+        <ion-input type="text | lowercase" formControlName="username"></ion-input>
+      </ion-item>
+
+      <!-- <ion-item *ngIf="regisForm.controls.username.pending">
+        <p>Checking username...</p>
+      </ion-item>
+
+      <ion-item *ngIf="!regisForm.controls.username.valid">
+        <p>Please enter a valid name.</p>
+      </ion-item> -->
+    
+      <ion-item>
+        <ion-label floating>รหัสผ่าน</ion-label>
+        <ion-input type="password" formControlName="password"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating>ชื่อ</ion-label>
+        <ion-input type="text" formControlName="name"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating>นามสกุล</ion-label>
+        <ion-input type="text" formControlName="surname"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating>เลขบัตรประชาชน</ion-label>
+        <ion-input type="number" formControlName="citizen_id"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating>เบอร์โทรศัพท์</ion-label>
+        <ion-input type="tel" formControlName="tel"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating>วันเกิด</ion-label>
+        <ion-datetime displayFormat="MMM DD YYYY" formControlName="bod"></ion-datetime>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating>อีเมล์</ion-label>
+        <ion-input type="email" formControlName="email"></ion-input>
+      </ion-item>
+  
+      <ion-item>
+        <ion-label floating>เพศ</ion-label>
+        <ion-select formControlName="gender" interface="action-sheet">
+          <ion-option value="1">ชาย</ion-option>
+          <ion-option value="2">หญิง</ion-option>
+        </ion-select>
+      </ion-item>
+
+      <button ion-button color="dark" block outline [disabled]="!regisForm.valid">สมัครสมาชิก</button>
+    </form>
+</ion-content>

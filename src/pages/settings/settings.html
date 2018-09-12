@@ -1,0 +1,37 @@
+<ion-header>
+  <ion-toolbar color="fff" id="toolbar1">
+    <ion-title>ตั้งค่า</ion-title>
+    <ion-buttons end>
+      
+      <button ion-button icon-only (click)="notice()">
+        <ion-icon name="notifications" color="secondary"></ion-icon>
+        <ion-badge color="danger">{{unread}}</ion-badge>
+      </button>
+
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding="">
+  <ion-list *ngIf="menu">
+    <button ion-item (click)="switch()" icon-start *ngIf="menu == 'TabsPage'">
+      <ion-icon name="swap" item-start></ion-icon>
+      โหมดร้านค้า
+    </button>
+
+    <button ion-item (click)="switch()" icon-start *ngIf="menu == 'TabShopPage'">
+      <ion-icon name="swap" item-start></ion-icon>
+      โหมดลูกค้า
+    </button>
+
+    <button ion-item (click)="transUser()" icon-start *ngIf="menu == 'TabsPage'">
+      <ion-icon name="document" item-start></ion-icon>
+      ประวัติการใช้งาน
+    </button>
+
+    <button ion-item (click)="logout()" icon-start>
+      <ion-icon name="log-out" item-start></ion-icon>
+      ออกจากระบบ
+    </button>
+  </ion-list>
+</ion-content>

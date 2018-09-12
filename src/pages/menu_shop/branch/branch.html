@@ -1,0 +1,17 @@
+<ion-header>
+  <ion-navbar color="secondary">
+    <ion-title>สาขา</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding>
+  <ion-list>
+
+    <ion-list *ngIf="branches == null" id="not_f">
+      <h1>ไม่พบข้อมูล</h1>
+    </ion-list>
+
+    <button ion-item *ngFor="let b of branches" (click)="branch_info(b)" >
+      {{ b.name }}
+    </button>
+  </ion-list>
+</ion-content>

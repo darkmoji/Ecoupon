@@ -1,0 +1,17 @@
+<ion-header>
+  <ion-navbar color="secondary">
+    <ion-title>ข้อมูลสมาชิก</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding>
+  <ion-list *ngIf="member" id="box">
+    <button ion-item *ngFor="let m of member" (click)="member_info(m)" >
+      <h1>{{ m.username }}</h1>
+      <h2><ion-icon name="megaphone" color="secondary"></ion-icon> โปรโมชั่น : {{m.c_promo}}</h2>
+    </button>
+  </ion-list>
+  <ion-list *ngIf="member==null" id="not_f">
+    <h1>ไม่พบข้อมูล</h1>
+  </ion-list>
+</ion-content>
+  

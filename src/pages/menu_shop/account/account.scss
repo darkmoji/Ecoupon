@@ -1,0 +1,43 @@
+page-account {
+    #toolbar1{
+        padding-right: 15px !important;
+        .toolbar-title{
+            color: #BE381E !important;
+            font-weight: bolder !important;
+            font-size: 3rem !important;
+        }
+        button {
+            ion-badge {
+                position: absolute;
+                top: -0.3rem;
+                right: -0.6rem;
+                opacity: 0.8;
+                padding-left: 6px;
+                padding-right: 6px;
+                font-size: 11px;
+                border-radius: 30px !important;
+        
+                & ~ ion-icon {
+                    margin-right: 1.2rem;
+                }
+            }
+        }
+    }
+    .scroll-content {
+        padding: 0px 16px 16px 16px !important;
+    }
+    .list-header {
+        border-bottom: 2px solid #FBA94C;
+        font-size: 2.0rem !important;
+        border-top: unset;
+        font-weight: bold;
+        margin-bottom: unset;
+    }
+    .label-md {
+        margin: 13px 8px 2px 0;
+    }
+    .item{
+        font-size: 1.5rem;
+    }
+    
+}

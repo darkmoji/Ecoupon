@@ -1,0 +1,67 @@
+<ion-header>
+  <ion-navbar>
+  </ion-navbar>
+</ion-header>
+<div id="tab0" *ngIf="(promo)">
+  <div *ngFor="let p of promo">
+    <img [src]="p.image">
+  </div>
+</div>
+<ion-content>
+
+  <ion-card padding id="card" *ngIf="(promo)">
+    <ion-slides pager>
+
+      <ion-slide padding *ngFor="let p of promo">
+        <h1>{{p.name}}</h1>
+        <p>{{p.description_reward}}</p>
+
+        <div id="linecard"></div>
+        <div id="card2">
+            <h2>ร้านค้า : {{p.name_shop}}</h2>
+
+            <h2>วันเริ่มต้น : {{p.start_date}}</h2>
+            <h2>วันสิ้นสุด : {{p.end_date}}</h2>
+        </div>
+      </ion-slide>
+      
+      <ion-slide padding *ngIf="con">
+        <div id="cardcon">
+          <h2>เงื่อนไขโปรโมชั่น</h2>
+          <div *ngFor="let c of con">
+            <p> - {{c.description}}</p>
+          </div>
+          <div *ngFor="let p of promo">
+            <p *ngIf="p.other_con"> - {{p.other_con}}</p>
+          </div>
+        </div>
+
+        <div id="cardcon2" *ngIf="bl">
+          <h2>จำกัดสาขา</h2>
+          <div *ngFor="let b of bl">
+            <p *ngIf="b.name"> - {{b.name}}</p>
+          </div>
+        </div>
+      </ion-slide>
+
+    </ion-slides>
+  </ion-card>
+
+  <div id="tab1" *ngIf="(promo)&&((page=='PromotionPage')||(page=='ShopDetailPage'))&&(type!=3)">
+    <button ion-button icon-start color="secondary" (click)="conMyPromo()">
+      รับโปรโมชั่น
+    </button>
+    
+    <button ion-button icon-end color="secondary" *ngIf="page=='PromotionPage'" (click)="goShop()">
+      ร้านค้า
+    </button>
+  </div>
+
+  <div padding *ngIf="(promo)&&((page=='MyCardPage')||(page=='ModalNoticePage'))&&(type==1)">
+    <button style="border-radius: 50px;" ion-button icon-start full color="secondary" (click)="conUsePromo() ">
+      ใช้สิทธิ์
+    </button>
+  </div>
+
+</ion-content>
+

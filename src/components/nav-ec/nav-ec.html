@@ -1,0 +1,18 @@
+<ion-toolbar color="fff" id="toolbar1">
+  <ion-title>{{title}}</ion-title>
+  <ion-buttons end>
+    
+    <button *ngIf="btncp" ion-button icon-only (click)="createPromo()">
+      <ion-icon name="add-circle" color="bluee"></ion-icon>
+    </button>
+    
+    <button *ngIf="btnsc" ion-button icon-only (click)="showCard()">
+        <ion-icon name="person" color="bluee"></ion-icon>
+      </button>
+
+    <button ion-button icon-only (click)="notice()">
+      <ion-icon name="notifications" color="bluee"></ion-icon>
+      <ion-badge color="danger">2</ion-badge>
+    </button>
+  </ion-buttons>
+</ion-toolbar>

@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-toolbar color="fff" id="toolbar1">
+    <ion-title>จัดการบัญชีหน้าร้าน</ion-title>
+    <ion-buttons end> 
+  
+      <button ion-button icon-only (click)="notice()">
+        <ion-icon name="notifications" color="secondary"></ion-icon>
+        <ion-badge color="danger" *ngIf="unread">{{unread}}</ion-badge>
+      </button>
+
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+  
+
+<ion-content padding>
+  <ion-list>
+    <ion-list-header>ร้านค้า</ion-list-header>
+    <button ion-item (click)="getInfoShop()">ข้อมูลร้านค้า</button>
+    <button ion-item (click)="getInfoMember()">ข้อมูลสมาชิก</button>
+    <button ion-item (click)="getTrans()">ข้อมูลการใช้งาน</button>
+  </ion-list>
+
+  <ion-list>
+    <ion-list-header>สาขา</ion-list-header>
+    <button ion-item (click)="addBranch()">สร้างสาขา</button>
+    <button ion-item (click)="showBranch()">สาขา</button>
+  </ion-list>
+</ion-content>

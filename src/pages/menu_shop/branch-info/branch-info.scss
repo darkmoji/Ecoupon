@@ -1,0 +1,65 @@
+page-branch-info {
+    #tab1{
+        background-color: #FBA94C !important;
+        height: 40% !important;
+    }
+    .scroll-content{
+        text-align: center;
+    }
+    ion-label {
+        white-space: normal;
+    }
+    ion-title{
+        text-align: center;
+    }
+    #logo{
+        background-color: #fff;
+        border-radius: 50px;
+        width: 100px;
+        height: 100px;
+        margin: auto;
+
+        ion-icon {
+            font-size: 50px; //Preferred size here
+            text-align: center;
+            line-height: 90px;
+        }    
+        img{
+            border-radius: 200px;
+            width: 100px;
+            height: 100px;
+            padding: 5px;
+        }
+    }
+    .toolbar-title{
+        color: black !important;
+    }
+    .item{
+        .icon{
+            font-size: 20px;
+            float: left; 
+            line-height: 1.5;
+            margin-right: 20px;
+        }
+        h1{
+            font-size: 20px;
+            float: left;
+            width: 85%;
+        }
+    }
+
+    h2{
+        margin-top: 0.5rem;
+        margin-bottom: 0.2rem;
+    }
+    
+    h5{
+        margin-top: 0.5rem;
+    }
+
+    .button{
+        margin-top: 10px;
+        border-radius: 50px; 
+        margin-bottom: 30px;
+    }
+}

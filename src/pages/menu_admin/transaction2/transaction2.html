@@ -1,0 +1,68 @@
+<ion-header>
+    <ion-navbar color="secondary">
+        <ion-title *ngIf="name_shop">{{name_shop}}</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-toolbar no-border-top color="fff" id="toolbar2">
+    <ion-segment [(ngModel)]="type" ion-selected>
+      <ion-segment-button value="1">
+        ให้คะแนนลูกค้า
+      </ion-segment-button>
+      <ion-segment-button value="2">
+        ลูกค้าใช้สิทธิ์
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
+
+  <div [ngSwitch]="type">
+    <ion-list *ngSwitchCase="1">
+      <div *ngIf="trans_give">
+        <ion-card *ngFor="let t of trans_give">
+
+          <ion-card-header *ngIf="t.id_member">
+            {{t.name_user}} ได้รับคะแนนสมาชิก {{t.point}} แต้ม 
+          </ion-card-header>
+          <ion-card-header *ngIf="t.id_member==null">
+            {{t.name_user}} ได้รับ {{t.point}} แต้ม สำหรับโปรโมชั่น {{t.name_promo}}
+          </ion-card-header>
+
+          <ion-card-content>
+            <ion-icon name="calendar"><p style="display:inline"> {{t.date}}</p></ion-icon>     
+            <ion-icon name="time" style="margin-left:10px"><p style="display:inline"> {{t.time}}</p></ion-icon>     
+          </ion-card-content>
+        </ion-card>
+      </div>
+      <ion-list *ngIf="trans_give==null" id="not_f">
+        <h1>ไม่พบข้อมูล</h1>
+      </ion-list>
+    </ion-list>
+  </div>
+
+  <div [ngSwitch]="type">
+    <ion-list *ngSwitchCase="2">
+      <div *ngIf="trans_use">
+        <ion-card *ngFor="let t of trans_use">
+
+          <ion-card-header *ngIf="t.id_member">
+            {{t.name_user}} ใช้คะแนนสมาชิก {{t.point}} แต้ม สำหรับแลกโปรโมชั่น {{t.name_promo}}
+          </ion-card-header>
+          <ion-card-header *ngIf="t.id_member==null">
+            {{t.name_user}} ใช้ {{t.point}} แต้ม สำหรับแลกโปรโมชั่น {{t.name_promo}}
+          </ion-card-header>
+
+          <ion-card-content>
+            <ion-icon name="calendar"><p style="display:inline"> {{t.date}}</p></ion-icon>     
+            <ion-icon name="time" style="margin-left:10px"><p style="display:inline"> {{t.time}}</p></ion-icon>     
+          </ion-card-content>
+        </ion-card>
+      </div>
+      <ion-list *ngIf="trans_use==null" id="not_f">
+        <h1>ไม่พบข้อมูล</h1>
+      </ion-list>
+    </ion-list>
+  </div>
+
+</ion-content>

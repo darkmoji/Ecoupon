@@ -1,0 +1,47 @@
+<ion-header>
+
+  <ion-navbar color="secondary">
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content>     
+    <div id="tab1" *ngIf="(shopDetails)&&(branch)">
+      <ion-grid>
+        <ion-row align-items-start>
+          <ion-col></ion-col>
+          <ion-col col-auto>
+            <div id="logo">
+              <ion-avatar item-start>
+                <img [src]="shopDetails[0].logo">
+              </ion-avatar>
+            </div>
+            <h2>{{shopDetails[0].name}}</h2>
+            <h5>{{branch[0].name}}</h5>
+          </ion-col>
+          <ion-col></ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+
+    <div id="tab2" *ngIf="branch" padding>
+      <ion-item>
+        <ion-icon name="call"></ion-icon>
+        <h1>{{branch[0].tel}}</h1>
+      </ion-item>   
+      <ion-item>
+        <ion-icon name="mail"></ion-icon>
+        <h1>{{branch[0].email}}</h1>
+      </ion-item>   
+      <ion-item>
+        <ion-icon name="navigate"></ion-icon> 
+        <h1>{{branch[0].address}}</h1>
+      </ion-item> 
+    </div> 
+  
+    <div style="height: 50%;" id="map_canvas" padding></div> 
+    
+    <button style="border-radius: 50px;" ion-button icon-start color="secondary" (click)="editBanch()">
+      แก้ไขข้อมูลสาขา
+    </button>
+  </ion-content>

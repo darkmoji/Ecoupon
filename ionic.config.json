@@ -1,0 +1,8 @@
+{
+  "name": "ecoupon",
+  "app_id": "dff18028",
+  "type": "ionic-angular",
+  "integrations": {
+    "cordova": {}
+  }
+}

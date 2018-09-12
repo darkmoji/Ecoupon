@@ -1,0 +1,22 @@
+<ion-header>
+  <ion-navbar color="secondary">
+      <ion-title>รายงาน</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <div *ngIf="shop" id="box">
+    <ion-list>
+      <ion-item *ngFor="let s of shop" (click)="showDetail(s)">
+        <ion-thumbnail item-start>
+            <img [src]="s.logo">
+        </ion-thumbnail>
+        <h1 style="font-weight: bold;">{{s.name}}</h1>
+        <h2><ion-icon name="megaphone" color="secondary"></ion-icon> โปรโมชั่น : {{s.c_shop}}</h2>
+      </ion-item>
+    </ion-list>
+  </div>
+  <ion-list *ngIf="shop==null" id="not_f">
+    <h1>ไม่พบข้อมูล</h1>
+  </ion-list>
+</ion-content>

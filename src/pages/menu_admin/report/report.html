@@ -1,0 +1,48 @@
+<ion-header>
+  <ion-toolbar color="fff" id="toolbar1">
+    <ion-title>รายงาน</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div style="display: block; margin-top: 10px">
+    <canvas baseChart
+            height="200"
+            [data]="pieChartData"
+            [labels]="pieChartLabels"
+            [chartType]="pieChartType"
+            (chartHover)="chartHovered($event)"
+            (chartClick)="chartClicked($event)">
+    </canvas>
+  </div>
+  <div id="item1">
+    <ion-item id="item1">
+      <ion-datetime displayFormat="MM/YYYY" 
+        pickerFormat="MMMM YYYY" 
+        [(ngModel)]="myDate"
+        (ionChange)="getReport()">
+      </ion-datetime>
+      <ion-label>เดือน/ปี</ion-label>
+    </ion-item>
+  </div>
+
+  <div id="box">
+    <ion-grid>
+      <ion-row>
+        <ion-col style="background-color: #fb9db1;" (click)="next(1)">
+          <h3>คูปอง</h3>
+          <h1>{{ct_1}}</h1>
+        </ion-col>
+        <ion-col style="background-color: #82c3ef;" (click)="next(2)">
+          <h3 style="font-size: 14px;">บัตรสะสมแต้ม</h3>
+          <h1>{{ct_2}}</h1>
+        </ion-col>
+        <ion-col style="border-right: white 4px solid; background-color: #ffd771;" (click)="next(3)">
+          <h3>บัตรสมาชิก</h3>
+          <h1>{{ct_3}}</h1>
+        </ion-col>
+      </ion-row>
+    </ion-grid>  
+  </div>
+
+</ion-content>

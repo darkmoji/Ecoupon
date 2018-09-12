@@ -1,0 +1,49 @@
+<ion-content padding id="login-bg">
+  <h1 id="ec">ECOUPON</h1>
+  <ion-card>
+    <ion-card-content>
+      <ion-list no-lines>
+          <form [formGroup]="loginForm" (ngSubmit)="signin()">
+            <ion-item class="input">
+              <ion-label floating>ชื่อผู้ใช้</ion-label>
+              <ion-input type="text | lowercase" formControlName="username" value=""></ion-input>
+            </ion-item>
+            <ion-item class="input">
+              <ion-label floating>รหัสผ่าน</ion-label>
+              <ion-input type="Password" formControlName="password" value=""></ion-input>
+            </ion-item>
+            <br>
+            <button ion-button color="danger" block outline [disabled]="!loginForm.valid">เข้าสู่ระบบ</button>
+            <b>หรือ</b>
+          </form>
+            <div>
+              <button ion-button color="secondary" block outline (click)="signup()">สมัครสมาชิก</button>
+            </div>
+        </ion-list>
+      </ion-card-content>
+    </ion-card>
+
+
+
+
+
+  <!-- <ion-list class="marginTop">
+    <form [formGroup]="loginForm" (ngSubmit)="signin()">
+      <ion-item class="input">
+          <ion-label stacked>Username</ion-label>
+      <ion-input type="text" formControlName="username"></ion-input>
+      </ion-item>
+
+      <ion-item class="input">
+          <ion-label stacked>Password</ion-label>
+      <ion-input type="Password" formControlName="password"></ion-input>
+      </ion-item>
+      <button ion-button color="dark" block outline [disabled]="!loginForm.valid">Sign In</button>
+    </form>
+  </ion-list>
+
+  <div>
+    <button ion-button color="dark" block outline (click)="signup()">Sign Up</button>
+  </div> -->
+
+</ion-content>

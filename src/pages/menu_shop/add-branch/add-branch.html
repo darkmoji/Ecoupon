@@ -1,0 +1,43 @@
+<ion-header>
+
+  <ion-navbar color="secondary">
+    <ion-title>สร้างสาขา</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <form [formGroup]="createForm" (ngSubmit)="createBranch()">
+    <ion-card-header style="font-weight:bold;">ข้อมูลทั่วไป</ion-card-header>
+    <ion-item>
+      <ion-label stacked>Name</ion-label>
+      <ion-input type="text" formControlName="name"></ion-input>
+    </ion-item>
+  
+    <ion-item>
+      <ion-label stacked>Phone</ion-label>
+      <ion-input type="number" formControlName="tel"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>Email</ion-label>
+      <ion-input type="text" formControlName="email"></ion-input>
+    </ion-item>
+
+  </form>
+
+  <ion-card-header style="font-weight:bold;">ที่อยู่ร้านค้า</ion-card-header>
+
+  <div style="height: 50%;" id="map_canvas"></div> 
+  <!-- <button ion-button color="dark" round id="locat_btn">get location</button> -->
+
+  <form [formGroup]="createForm" (ngSubmit)="createBranch()">
+    <ion-item>
+      <ion-label stacked>Address</ion-label>
+      <ion-input type="text" formControlName="address"></ion-input>
+    </ion-item>
+
+    <button ion-button color="dark" block outline [disabled]="!createForm.valid">สร้างสาขา</button>
+  </form>
+</ion-content>

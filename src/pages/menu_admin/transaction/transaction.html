@@ -1,0 +1,57 @@
+<ion-header>
+  <ion-toolbar color="fff" id="toolbar1">
+    <ion-title>ประวัติธุรกรรม</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div id="item1" padding>
+    <ion-list>
+      <ion-item>
+        <ion-label>ค้นหาจาก</ion-label>
+        <ion-select [(ngModel)]="search_sel" interface="action-sheet" (ionChange)="onChange()">
+          <ion-option value="1">วัน</ion-option>
+          <ion-option value="2">เดือน</ion-option>
+          <ion-option value="3">ปี</ion-option>
+        </ion-select>
+      </ion-item>
+    </ion-list>
+
+    <ion-item *ngIf="search_sel==1">
+      <ion-label>วัน :</ion-label>
+      <ion-datetime displayFormat="DD/MM/YYYY" pickerFormat="DD MMMM YYYY" [(ngModel)]="myDate" (ionChange)="onDay()"></ion-datetime>
+    </ion-item>
+    
+    <ion-item *ngIf="search_sel==2">
+      <ion-label>เดือน :</ion-label>
+      <ion-datetime displayFormat="MM/YYYY" 
+        pickerFormat="MMMM YYYY" 
+        [(ngModel)]="myDate"
+        (ionChange)="onDay()">
+      </ion-datetime>
+    </ion-item>
+
+    <ion-item *ngIf="search_sel==3">
+        <ion-label>ปี :</ion-label>
+        <ion-datetime displayFormat="YYYY" 
+          pickerFormat="YYYY" 
+          [(ngModel)]="myDate"
+          (ionChange)="onDay()">
+        </ion-datetime>
+      </ion-item>
+  </div>
+
+  <div id="item2" *ngIf="myDate">
+    <ion-list *ngIf="trans">
+      <button ion-item *ngFor="let t of trans" (click)="next(t)">
+        <ion-avatar item-start>
+          <img [src]="t.logo_shop">
+        </ion-avatar>
+          {{t.name_shop}}
+      </button>
+    </ion-list>
+    <ion-list *ngIf="check_empty==true" id="not_f">
+      <h1>ไม่พบข้อมูล</h1>
+    </ion-list>
+  </div>
+</ion-content>

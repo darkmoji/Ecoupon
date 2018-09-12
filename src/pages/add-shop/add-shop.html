@@ -1,0 +1,70 @@
+<ion-header *ngIf="menu">
+
+  <ion-navbar color="secondary">
+    <ion-title>{{menu}}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+  <!-- <ion-grid no-padding>
+    <ion-row>
+      <ion-col *ngFor="let p of photo">
+        <ion-item *ngFor="let c of photo">
+          <h2>tttt</h2>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+  </ion-grid> -->
+  <ion-card-header style="font-weight:bold;">ข้อมูลทั่วไป</ion-card-header>
+  <ion-card>
+    <ion-card-content>
+      <ion-item>
+        <img [src]="base64Image" *ngIf="base64Image"/>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
+  <button ion-button color="dark" block outline (click)="getphoto()">
+    <ion-icon name="image"></ion-icon>&nbsp;Choose Photo
+  </button>
+  <form [formGroup]="createForm" (ngSubmit)="createShop()">
+    <ion-item>
+      <ion-label stacked>Name</ion-label>
+      <ion-input type="text" formControlName="name"></ion-input>
+    </ion-item>
+    
+    <ion-item>
+      <ion-label stacked>Typeshop</ion-label>
+      <ion-select formControlName="id_type_shop" interface="action-sheet">
+        <ion-option *ngFor="let t of typeshop" [value]="t.id_type_shop">{{t.name}}</ion-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>Phone</ion-label>
+      <ion-input type="number" formControlName="tel"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>Email</ion-label>
+      <ion-input type="text" formControlName="email"></ion-input>
+    </ion-item>
+    
+  </form>
+
+  <ion-card-header style="font-weight:bold;">ที่อยู่ร้านค้า</ion-card-header>
+
+  <div style="height: 50%;" id="map_canvas"></div> 
+  <!-- <button ion-button color="dark" round id="locat_btn">get location</button> -->
+
+  <form [formGroup]="createForm" (ngSubmit)="createShop()">
+    <ion-item>
+      <ion-label stacked>Address</ion-label>
+      <ion-input type="text" formControlName="address"></ion-input>
+    </ion-item>
+
+    <button ion-button color="dark" block outline [disabled]="!createForm.valid" *ngIf="mode=='add'">สร้างร้านค้า</button>
+    <button ion-button color="dark" block outline [disabled]="!createForm.valid" *ngIf="mode=='edit'">แก้ไขข้อมูล</button>
+  </form>
+
+</ion-content>

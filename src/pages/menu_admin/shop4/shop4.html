@@ -1,0 +1,63 @@
+<ion-header>
+  <ion-navbar>
+  </ion-navbar>
+</ion-header>
+
+<div id="tab0" *ngIf="(promo)">
+  <div *ngFor="let p of promo">
+    <img [src]="p.image">
+  </div>
+</div>
+
+<ion-content>
+
+  <ion-card padding id="card" *ngIf="(promo)&&(pro)">
+    <ion-slides pager>
+
+      <ion-slide padding *ngFor="let p of promo">
+        <h1>{{p.name}}</h1>
+        <p>{{p.description_reward}}</p>
+
+        <div id="linecard"></div>
+        <div id="card2">
+          <h2>ร้านค้า : {{p.name_shop}}</h2>
+
+          <h2>วันเริ่มต้น : {{p.start_date}}</h2>
+          <h2>วันสิ้นสุด : {{p.end_date}}</h2>
+          <ion-grid>
+            <ion-row>
+              <ion-col>
+                <ion-icon name="people" color="secondary"></ion-icon><h2 style="font-weight: bold;">ผู้รับสิทธิ์ : {{pro[0].count_promo}}</h2>
+              </ion-col>
+              <ion-col>
+                <ion-icon name="star" color="secondary"></ion-icon><h2 style="font-weight: bold;">การใช้สิทธิ์ : {{pro[0].count_used}}</h2>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </div>
+      </ion-slide>
+      
+      <ion-slide padding *ngIf="con">
+        <div id="cardcon">
+          <h2>เงื่อนไขโปรโมชั่น</h2>
+          <div *ngFor="let c of con">
+            <p> - {{c.description}}</p>
+          </div>
+          <div *ngFor="let p of promo">
+            <p *ngIf="p.other_con"> - {{p.other_con}}</p>
+          </div>
+        </div>
+
+        <div id="cardcon2" *ngIf="bl">
+          <h2>จำกัดสาขา</h2>
+          <div *ngFor="let b of bl">
+            <p *ngIf="b.name"> - {{b.name}}</p>
+          </div>
+        </div>
+      </ion-slide>
+
+    </ion-slides>
+  </ion-card>
+
+</ion-content>
+  

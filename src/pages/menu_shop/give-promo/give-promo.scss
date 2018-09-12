@@ -1,0 +1,76 @@
+page-give-promo {
+    .scroll-content{
+        overflow: unset;
+    }
+    #tab1{
+        background-color: #FBA94C !important;
+        height: 10% !important;
+        h2{
+            color: #fff;
+            margin-top: unset;
+            text-align: right;
+        }
+        p{
+            font-size: 20px;
+            color: #FBA94C !important;
+            margin-top: unset;
+            text-align: right !important;
+        }
+    }
+    #tab2{
+        margin-top: 15%;
+        .list-header{
+            
+            font-size: 22px;
+            border-top: unset;
+            border-bottom: #FBA94C 3px solid;
+            margin-bottom: unset;
+            padding: unset;
+            width: calc(100% - 36px);
+            margin-left: 16px;
+        }
+        .label-md {
+            margin: unset;
+        }
+    }
+
+    #logo{
+        background-color: #fff;
+        border-radius: 50px;
+        width: 100px;
+        height: 100px;
+        position: absolute;
+        margin-left: 5%;
+        border: #FEDA85 5px solid;
+
+        .icon {
+            margin: 20px 25px 25px 25px;
+            font-size: 50px;
+        }    
+    }
+
+    ion-label {
+        font-weight: bolder;
+    }
+
+    .item ion-thumbnail img {
+        width: 60px;
+        height: 60px;
+    }
+
+    .item ion-thumbnail {
+        min-width: 60px;
+        min-height: 60px;
+    }
+
+    .item.item-block .item-inner {
+        padding-right: 16px;
+    }
+    #not_f{
+        h1{
+            margin-top: 40%;
+            text-align: center;
+            color: #BE381E;
+        }
+    }
+}

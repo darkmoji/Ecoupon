@@ -1,0 +1,132 @@
+<ion-header>
+  <ion-navbar color="bluee">
+    <ion-title>Create Promotion</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <h4>ข้อมูลโปรโมชั่น</h4>
+  <ion-card *ngIf="base64Image">
+    <ion-card-content>
+      <ion-item>
+        <img [src]="base64Image"/>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
+  <button ion-button color="dark" block outline (click)="getphoto()">
+    <ion-icon name="image"></ion-icon>&nbsp;เลือกรูปภาพโปรโมชั่น
+  </button>
+    
+  <form [formGroup]="createForm" (ngSubmit)="createPromo()">
+    <ion-item>
+      <ion-label floating>ชื่อโปรโมชั่น</ion-label>
+      <ion-input type="text" formControlName="name_promo"></ion-input>
+    </ion-item>
+
+    <ion-item> 
+      <ion-label floating>ประเภทโปรโมชั่น</ion-label>
+      <ion-select interface="action-sheet" formControlName="type_promo" [(ngModel)]="promoType" (ionChange)="clickType()">
+        <ion-option *ngFor="let t of typepromo" [value]="t.id_type_promo">{{t.name}}</ion-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>วันเริ่มโปรโมชั่น</ion-label>
+      <ion-datetime displayFormat="YYYY-MM-DD HH:mm" pickerFormat="YYYY-MM-DD HH:mm" formControlName="start_datetime"></ion-datetime>
+    </ion-item>
+  
+    <ion-item>
+      <ion-label floating>วันสิ้นสุดโปรโมชั่น</ion-label>
+      <ion-datetime displayFormat="YYYY-MM-DD HH:mm" pickerFormat="YYYY-MM-DD HH:mm" formControlName="end_datetime"></ion-datetime>
+    </ion-item>
+
+    <h4>ข้อมูลรางวัล</h4>
+    <ion-item> 
+      <ion-label floating>ประเภทรางวัล</ion-label>
+      <ion-select interface="action-sheet" formControlName="type_reward" [(ngModel)]="rewardType">
+        <ion-option value="1">ส่วนลด</ion-option>
+        <ion-option value="2">สินค้า</ion-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item *ngIf="rewardType == '1'"> 
+      <ion-label floating>รูปแบบส่วนลด</ion-label>
+      <ion-select interface="action-sheet" formControlName="type_discount" [(ngModel)]="discountType">
+        <ion-option value="1">เปอร์เซ็นต์(%)</ion-option>
+        <ion-option value="2">จำนวนเงิน(บาท)</ion-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item *ngIf="discountType == '1'||discountType == '2'">
+      <ion-label floating>ส่วนลด</ion-label>
+      <ion-input type="text" formControlName="discount"></ion-input>
+    </ion-item>
+
+    <ion-item *ngIf="rewardType == '1'||rewardType == '2'">
+      <ion-label floating>ชื่อสินค้า</ion-label>
+      <ion-input type="text" formControlName="name_reward"></ion-input>
+    </ion-item>
+
+    <ion-item *ngIf="rewardType == '1'||rewardType == '2'">
+      <ion-label floating>ราคาปกติ</ion-label>
+      <ion-input type="text" formControlName="price_reward"></ion-input>
+    </ion-item>
+
+    <ion-item *ngIf="rewardType == '2'">
+      <ion-label floating>จำนวนของรางวัล</ion-label>
+      <ion-input type="text" formControlName="quantity_reward"></ion-input>
+    </ion-item>
+
+    <ion-item *ngIf="rewardType == '1'||rewardType == '2'"> 
+      <ion-label floating>หน่วยของสินค้า</ion-label>
+      <ion-select interface="action-sheet" formControlName="unit_reward">
+        <ion-option value="1">แก้ว</ion-option>
+        <ion-option value="2">ชิ้น</ion-option>
+        <ion-option value="3">กล่อง</ion-option>
+        <ion-option value="4">อัน</ion-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item *ngIf="rewardType == '1'||rewardType == '2'">
+      <ion-label floating>รายละเอียดของรางวัล</ion-label>
+      <ion-input type="text" formControlName="description_reward"></ion-input>
+    </ion-item>
+
+    <ion-item *ngIf="promoType != '1'">
+      <ion-label floating>Max Point</ion-label>
+      <ion-input type="text" formControlName="max_point"></ion-input>
+    </ion-item>
+
+    <h4>เงื่อนไขโปรโมชั่น</h4>
+    <ion-item>
+      <ion-label floating>เงื่อนไขโปรโมชั่น</ion-label>
+      <ion-select formControlName="condition" multiple="true" cancelText="ยกเลิก" okText="ยืนยัน" [selectOptions]="selectOptions">
+          <ion-option *ngFor="let c of conditions" [value]="c.id_con">{{c.description}}</ion-option>
+      </ion-select>
+    </ion-item>
+    
+    <ion-item>
+      <ion-label floating>เงื่อนไขเพิ่มเติม</ion-label>
+      <ion-input type="text" formControlName="other_con"></ion-input>
+    </ion-item>
+    
+    <ion-item *ngIf="branches">
+      <ion-label floating>จำกัดสาขา</ion-label>
+      <ion-select formControlName="branch_limit" multiple="true" cancelText="ยกเลิก" okText="ยืนยัน" [selectOptions]="selectOptions">
+        <ion-option *ngFor="let b of branches" [value]="b.id_branch">{{b.name}}</ion-option>
+      </ion-select>
+    </ion-item>
+
+    <h4>การเข้าถึงโปรโมชั่น</h4>
+    <ion-item>
+      <ion-label floating>โปรโมชั่นสำหรับ</ion-label>
+      <ion-select interface="action-sheet" formControlName="id_tap" [(ngModel)]="ap" [disabled]="promoType==3">
+          <ion-option *ngFor="let tap of typeAp" [value]="tap.id_type_authority_promo">{{tap.name}}</ion-option>
+      </ion-select>
+    </ion-item>
+    
+    <br>
+    <button ion-button color="dark" block outline [disabled]="!createForm.valid">สร้างโปรโมชั่น</button>
+  </form>
+</ion-content>

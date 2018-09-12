@@ -1,0 +1,57 @@
+page-shop4 {
+    .header .bar-button-default{
+        color: black;
+    }
+    .header .button-inner{
+        border-radius: 50px;
+        background-color: white;
+    }
+    .toolbar-background{
+        background-color: transparent !important;
+    }
+    .scroll-content{
+        text-align: center;
+    }
+
+
+    #tab0{
+        height: 50% !important;
+        position: absolute;
+        z-index: 1;
+    }
+    
+
+    #card{
+        margin-top: 50%;
+        border-radius: 10px;
+        z-index: 20;
+        position: relative;
+    }
+    #linecard{
+        margin: 15px auto 5px auto;
+        width: 10%;
+        border-top: solid black 5px;
+    }
+    #card2{
+        margin-top: 30px;
+        margin-bottom: 50px;
+    }
+    #cardcon{
+        text-align: left;
+        h2{
+            font-weight: bold;
+        }
+    }
+    #cardcon2{
+        margin-top: 20px;
+        text-align: left;
+        h2{
+            font-weight: bold;
+        }
+    }
+    ion-icon {
+        float: left;
+        margin-right: 2px;
+    }
+
+}

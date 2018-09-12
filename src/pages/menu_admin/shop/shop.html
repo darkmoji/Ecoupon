@@ -1,0 +1,20 @@
+<ion-header>
+  <ion-navbar color="secondary">
+    <ion-title>ร้านค้า</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <ion-list *ngIf="shop">
+    <button ion-item *ngFor="let s of shop" (click)="action(s)">
+      <ion-avatar item-start>
+        <img [src]="s.logo">
+      </ion-avatar>
+      {{ s.name }}
+      <ion-badge item-end *ngIf="s.branch" color="danger">สาขา</ion-badge>
+    </button>
+  </ion-list>
+
+</ion-content>
+      

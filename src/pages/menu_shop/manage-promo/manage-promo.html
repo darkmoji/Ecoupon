@@ -1,0 +1,56 @@
+<ion-header>
+  <ion-toolbar color="fff" id="toolbar1">
+    <ion-title>จัดการโปรโมชั่น</ion-title>
+    <ion-buttons end> 
+
+      <button ion-button icon-only (click)="createPromo()">
+        <ion-icon name="add-circle" color="bluee"></ion-icon>
+      </button>
+
+      <button ion-button icon-only (click)="notice()">
+        <ion-icon name="notifications" color="secondary"></ion-icon>
+        <ion-badge color="danger" *ngIf="unread">{{unread}}</ion-badge>
+      </button>
+
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+
+  <ion-toolbar no-border-top color="fff" id="toolbar2">
+    <ion-segment [(ngModel)]="type" ion-selected>
+      <ion-segment-button value="1">
+        คูปอง
+      </ion-segment-button>
+      <ion-segment-button value="2">
+        บัตรสะสมแต้ม
+      </ion-segment-button>
+      <ion-segment-button value="3">
+        บัตรสมาชิก
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
+
+  <div [ngSwitch]="type" *ngIf="promo">
+
+    <div *ngFor="let t of typepromo">
+      <ion-list *ngSwitchCase="t.id_type_promo">
+        <ion-list *ngIf="promo[t.id_type_promo] == null" id="not_f">
+          <h1>ไม่พบข้อมูล</h1>
+        </ion-list>
+        <ion-item *ngFor="let p of promo[t.id_type_promo]" (click)="showDetail(p,t.id_type_promo)">
+          <ion-thumbnail item-start>
+            <img [src]="p.image">
+          </ion-thumbnail>
+          <h2 style="font-weight: bold;">{{p.name}}</h2>
+          <ion-icon name="people" color="secondary"></ion-icon><h3>ผู้รับสิทธิ์ : {{p.count_promo}}</h3>
+          <ion-icon name="star" color="secondary"></ion-icon><h3>การใช้สิทธิ์ : {{p.count_used}}</h3>
+        </ion-item>
+      </ion-list>
+    </div>
+
+  </div>
+
+</ion-content>
+  

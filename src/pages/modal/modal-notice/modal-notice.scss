@@ -1,0 +1,35 @@
+page-modal-notice {
+    ion-header{
+        .toolbar-title{
+            text-align: center;
+            font-size: 1.7rem;
+            font-weight: 600;
+            color: #000;
+            pointer-events: auto;
+            padding-top: 20px;
+            
+        }
+        .toolbar-content{
+            -webkit-box-ordinal-group: 5;
+            order: 4;
+        }
+        .bar-buttons{
+            padding-top: 20px;
+        }
+    }
+    .header .toolbar-background{
+        border-width: 0 0 0.55px;
+        border-style: solid;
+        border-color: rgba(0, 0, 0, 0.3);
+    }
+    .scroll-content{
+        background-color: #f4f4f7;
+    }
+    .card{
+        border-radius: 10px !important;
+    }
+    .card-header{
+        padding: 10px 10px 10px 16px !important;
+        white-space: normal;
+    }
+}

@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-toolbar color="fff" id="toolbar1">
+    <ion-title>ให้คะแนนลูกค้า</ion-title>
+    <ion-buttons end> 
+  
+      <button ion-button icon-only (click)="notice()">
+        <ion-icon name="notifications" color="secondary"></ion-icon>
+        <ion-badge color="danger" *ngIf="unread">{{unread}}</ion-badge>
+      </button>
+
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content padding>
+
+  <ion-item>
+    <ion-label floating>เบอร์มือถือ/เลขบัตรประจำตัวประชาชน</ion-label>
+    <ion-input type="number" [(ngModel)]="data" value=""></ion-input>
+  </ion-item>
+
+  <button ion-button color="dark" block outline (click)="checkUser()">
+    <ion-icon name="search"></ion-icon>&nbsp;ค้นหาลูกค้า
+  </button>
+  <b>หรือ</b>
+  <button ion-button color="dark" block outline (click)="scanCode()">
+    <ion-icon name="qr-scanner"></ion-icon>&nbsp;QR Scan
+  </button>
+
+</ion-content>

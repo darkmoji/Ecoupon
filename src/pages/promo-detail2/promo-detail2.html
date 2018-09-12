@@ -1,0 +1,84 @@
+<ion-header>
+  <ion-navbar>
+    <div *ngIf="(promo)" class="toolbar-background" style="background-color: #FBA94C !important;"></div>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+
+  <div *ngIf="(promo)" id="col1">
+    <h1>{{promo[0].name_shop}}</h1>
+  </div>
+  
+  <ion-card *ngIf="(promo)&&(row)&&(point)" padding id="card_col">
+    <ion-grid id="row">
+      <ion-row *ngFor="let r of row; let i = index">
+        
+        <ion-col *ngFor="let p of point; let x = index">
+          <div id="item_col"><img src="assets/icon/star.png" *ngIf="((i < mark_row)&&(x < mark_col))||(i+1 <= mark_row)"></div>
+        </ion-col>
+
+      </ion-row>
+    </ion-grid>
+  </ion-card>
+
+  <div *ngIf="(promo)&&(mypromo)&&(check_point)" id="col2">
+    <ion-grid>
+      <ion-row>
+      
+        <ion-col>
+          <h1>จำนวนแต้ม</h1>
+          <h1>{{mypromo[0].point}}/{{promo[0].max_point}}</h1>
+        </ion-col>
+
+        <ion-col style="border-left: #FBA94C solid 2px">
+          <button ion-button icon-start color="secondary" (click)="conMyPromo()" *ngIf="check_point == 1">
+            ใช้สิทธิ์ 
+          </button>
+          <button ion-button icon-start color="gray" *ngIf="check_point == 2">
+            ใช้สิทธิ์ 
+          </button>
+        </ion-col>
+
+      </ion-row>
+    </ion-grid>
+  </div>
+
+  <ion-card padding id="card" *ngIf="(promo)">
+      <ion-slides pager>
+  
+        <ion-slide padding *ngFor="let p of promo">
+          <h1>{{p.name}}</h1>
+          <p>{{p.description_reward}}</p>
+  
+          <div id="linecard"></div>
+          <div id="card2">
+
+              <h2>วันเริ่มต้น : {{p.start_date}}</h2>
+              <h2>วันสิ้นสุด : {{p.end_date}}</h2>
+          </div>
+        </ion-slide>
+        
+        <ion-slide padding *ngIf="con">
+          <div id="cardcon">
+            <h2>เงื่อนไขโปรโมชั่น</h2>
+            <div *ngFor="let c of con">
+              <p> - {{c.description}}</p>
+            </div>
+            <div *ngFor="let p of promo">
+              <p *ngIf="p.other_con"> - {{p.other_con}}</p>
+            </div>
+          </div>
+  
+          <div id="cardcon2" *ngIf="bl">
+            <h2>จำกัดสาขา</h2>
+            <div *ngFor="let b of bl">
+              <p *ngIf="b.name"> - {{b.name}}</p>
+            </div>
+          </div>
+        </ion-slide>
+  
+      </ion-slides>
+    </ion-card>
+
+</ion-content>

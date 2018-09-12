@@ -1,0 +1,18 @@
+<ion-header>
+  <ion-navbar color="secondary">
+    <ion-title>ผู้ใช้งาน</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+
+  <ion-list *ngIf="user">
+    <button ion-item *ngFor="let u of user" (click)="next(u)">
+      {{ u.username }}
+      <ion-badge item-end *ngIf="u.shop" color="danger">ร้านค้า</ion-badge>
+    </button>
+  </ion-list>
+
+</ion-content>
+  

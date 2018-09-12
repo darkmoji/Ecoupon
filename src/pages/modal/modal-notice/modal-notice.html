@@ -1,0 +1,46 @@
+<ion-header>
+  <ion-toolbar>
+
+    <ion-title>
+      แจ้งเตือน
+    </ion-title>
+
+    <ion-buttons start>
+      <button ion-button (click)="dismiss()">
+        <span ion-text color="primary">ยกเลิก</span>
+        <!-- <ion-icon name="md-close" showWhen="android,windows"></ion-icon> -->
+      </button>
+    </ion-buttons>
+    
+    <ion-buttons end>
+      <button ion-button (click)="dismiss()">
+        <span ion-text color="primary">ลบทั้งหมด</span>
+      </button>
+    </ion-buttons>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div *ngFor="let n of notifications">
+    <ion-card (click)="page(n)" *ngIf="n.status == 1">
+      <ion-card-header>
+        {{n.message}}
+      </ion-card-header>
+      <ion-card-content>
+        <ion-icon name="calendar"><p style="display:inline"> {{n.date}}</p></ion-icon>     
+        <ion-icon name="time" style="margin-left:10px"><p style="display:inline"> {{n.time}}</p></ion-icon>     
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card style="background: #f4f4f723 !important; color: gray !important" (click)="page(n)" *ngIf="n.status == 2">
+      <ion-card-header style="color: gray !important">
+        {{n.message}}
+      </ion-card-header>
+      <ion-card-content style="color: gray !important">
+        <ion-icon name="calendar"><p style="display:inline;color: gray !important"> {{n.date}}</p></ion-icon>     
+        <ion-icon name="time" style="margin-left:10px"><p style="display:inline;color: gray !important"> {{n.time}}</p></ion-icon>     
+      </ion-card-content>
+    </ion-card>
+  </div>
+</ion-content>

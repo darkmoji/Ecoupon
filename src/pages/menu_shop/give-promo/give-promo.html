@@ -1,0 +1,41 @@
+<ion-header>
+    <ion-navbar color="secondary">
+    </ion-navbar>
+  </ion-header>
+  
+<ion-content>
+  <div id="logo">
+    <ion-icon name="person" color="bluee"></ion-icon>
+  </div>
+  <div id="tab1" padding *ngIf="user">
+      <h2>{{user[0].name}}  {{user[0].surname}}</h2>
+      <p *ngIf="s_member">{{s_member}}</p>
+  </div>
+
+  <div id="tab2">
+    <ion-list *ngIf="promoShop == null" id="not_f">
+      <h1>ไม่พบโปรโมชั่น</h1>
+    </ion-list>
+    <ion-list *ngIf="promoShop">
+      <ion-list-header>
+        โปรโมชั่นภายในร้าน
+      </ion-list-header>
+
+      <ion-item (click)="giveMempoint()" *ngIf="(shopDetails)&&(member)">
+        <ion-thumbnail item-start>
+          <img [src]="shopDetails[0].logo">
+        </ion-thumbnail>
+        <h2>บัตรสมาชิก</h2>
+      </ion-item>
+
+      <ion-item *ngFor="let p of promoShop" (click)="givepoint(p)">
+        <ion-thumbnail item-start>
+          <img [src]="p.image">
+        </ion-thumbnail>
+        <h2>{{p.name}}</h2>
+      </ion-item>
+
+    </ion-list>
+  </div>
+
+</ion-content>

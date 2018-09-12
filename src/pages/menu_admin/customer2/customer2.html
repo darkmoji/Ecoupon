@@ -1,0 +1,109 @@
+<ion-header>
+
+  <ion-navbar color="secondary">
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>      
+  <div id="tab1" *ngIf="userDetails">
+    <ion-grid *ngFor="let u of userDetails">
+      <ion-row align-items-start>
+        <ion-col></ion-col>
+        <ion-col col-auto>
+          <div id="logo">
+            <ion-icon name="person" color="bluee"></ion-icon>
+          </div>
+          <h2>{{u.name}}  {{u.surname}}</h2>
+        </ion-col>
+        <ion-col></ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+
+  <ion-card id="card" *ngIf="userDetails">
+    
+    <ion-slides pager>
+
+      <ion-slide padding *ngFor="let u of userDetails">
+        <ion-item>
+          <ion-icon name="person"></ion-icon> 
+          <h1>{{u.citizen_id}}</h1>
+        </ion-item>  
+        <ion-item>
+          <ion-icon name="call"></ion-icon>
+          <h1>{{u.tel}}</h1>
+        </ion-item>   
+        <ion-item>
+          <ion-icon name="mail"></ion-icon>
+          <h1>{{u.email}}</h1>
+        </ion-item>   
+        <ion-item>
+          <ion-icon name="calendar"></ion-icon>
+          <h1>{{u.bod}}</h1>
+        </ion-item> 
+        <ion-item *ngIf="u.gender==1">
+          <ion-icon name="male"></ion-icon>
+          <h1>{{gender}}</h1>
+        </ion-item>  
+        <ion-item *ngIf="u.gender==2">
+          <ion-icon name="female"></ion-icon>
+          <h1>{{gender}}</h1>
+        </ion-item>     
+      </ion-slide>
+    
+      <ion-slide id="box2" padding *ngIf="(mode==2)&&(userDetails)">
+        <ion-grid *ngIf="mode==2">
+          
+          <ion-row>
+            <ion-col></ion-col>
+            <ion-col col-auto>
+              <h1 style="font-weight:bold">ร้านค้า</h1>
+            </ion-col>
+            <ion-col></ion-col>
+          </ion-row>
+
+          <ion-row>
+            <ion-col></ion-col>
+            <ion-col col-auto>
+              <h1 style="font-weight:bold">{{userDetails[0].name_shop}}</h1>
+            </ion-col>
+            <ion-col></ion-col>
+          </ion-row>
+
+          <ion-row>
+            <ion-col></ion-col>
+            <ion-col col-auto>
+              <h3>{{userDetails[0].name_type}}</h3>   
+            </ion-col>
+            <ion-col></ion-col>
+          </ion-row>
+
+          <ion-row>
+            <ion-col></ion-col>
+            <ion-col col-auto>
+              <ion-item id="box2_1">
+                <ion-icon name="call"></ion-icon>
+                <h1>{{userDetails[0].tel_shop}}</h1>
+              </ion-item>   
+            </ion-col>
+            <ion-col></ion-col>
+          </ion-row>
+
+          <ion-row>
+            <ion-col></ion-col>
+            <ion-col col-auto>
+              <ion-item id="box2_2">
+                <ion-icon name="mail"></ion-icon>
+                <h1>{{userDetails[0].email_shop}}</h1>
+              </ion-item>    
+            </ion-col>
+            <ion-col></ion-col>
+          </ion-row>
+
+        </ion-grid>
+      </ion-slide>
+    </ion-slides>
+  </ion-card>
+</ion-content>

@@ -1,0 +1,90 @@
+<ion-header>
+    <ion-navbar color="secondary">
+    </ion-navbar>
+</ion-header>
+
+  <ion-content>
+    <div id="logo">
+        <img src="assets/icon/coin.png">
+    </div>
+    <div id="tab1" padding *ngIf="(user)">
+        <h2>{{user[0].name}}  {{user[0].surname}}</h2>
+        <p *ngIf="promoDetails">{{promoDetails[0].name}}</p>
+        <p *ngIf="member">บัตรสมาชิก</p>
+    </div>
+    <div id="tab2" padding>
+        <ion-list-header>
+        เลือกคะแนน
+        </ion-list-header>
+        <div id="point1">
+            <ion-grid>
+                <ion-row align-items-start>
+                    <ion-col></ion-col>
+                    <ion-col col-auto>
+                        <h1 *ngIf="member">{{member[0].point}}</h1>
+                        <h1 *ngIf="promoDetails">{{promoDetails[0].point}}</h1>
+                    </ion-col>
+                    <ion-col></ion-col>
+                </ion-row>
+            </ion-grid>
+        </div>
+        <div id="point2" *ngIf="promoDetails">
+            <ion-grid>
+                <ion-row>
+                    <ion-col>
+                        <button ion-button color="secondary" outline full (click)="click_btn(1)">1</button>
+                    </ion-col>
+                    <ion-col>
+                        <button ion-button color="secondary" outline full (click)="click_btn(2)">2</button>
+                    </ion-col>
+                    <ion-col>
+                        <button ion-button color="secondary" outline full (click)="click_btn(3)">3</button>
+                    </ion-col>
+                </ion-row>
+                <ion-row>
+                    <ion-col>
+                        <button ion-button color="secondary" outline full (click)="click_btn(4)">4</button>
+                    </ion-col>
+                    <ion-col>
+                        <button ion-button color="secondary" outline full (click)="click_btn(5)">5</button>
+                    </ion-col>
+                    <ion-col>
+                        <button ion-button color="secondary" outline full (click)="click_btn(6)">6</button>
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
+        </div>
+        <div id="point2" *ngIf="member">
+            <ion-grid>
+                <ion-row>
+                    <ion-col>
+                        <button ion-button color="secondary" outline full (click)="click_btn(1)">1</button>
+                    </ion-col>
+                    <ion-col>
+                        <button ion-button color="secondary" outline full (click)="click_btn(5)">5</button>
+                    </ion-col>
+                    <ion-col>
+                        <button ion-button color="secondary" outline full (click)="click_btn(10)">10</button>
+                    </ion-col>
+                </ion-row>
+                <ion-row>
+                    <ion-col>
+                        <button ion-button color="secondary" outline full (click)="click_btn(20)">20</button>
+                    </ion-col>
+                    <ion-col>
+                        <button ion-button color="secondary" outline full (click)="click_btn(50)">50</button>
+                    </ion-col>
+                    <ion-col>
+                        <button ion-button color="secondary" outline full (click)="click_btn(100)">100</button>
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
+        </div>
+        <ion-item style="padding-left:unset;">
+            <ion-input type="number" placeholder="กรอกคะแนนเพิ่มเติม" [(ngModel)]="point"></ion-input>
+        </ion-item>
+        
+        <button ion-button color="secondary" block (click)="givepoint()" *ngIf="point" id="btn_con">ยืนยัน</button>
+    </div>
+
+</ion-content>
