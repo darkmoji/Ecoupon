@@ -105,7 +105,14 @@ export class PromotionPage {
           count++;
           this.promo[t.id_type_promo] = res;
         },
-        error =>  this.errorMessage = <any>error);
+        error => {
+          if(count == 3){
+            this.checkLoad = 2;
+            this.loading.dismiss();
+          }
+          this.errorMessage = <any>error
+          count++;
+        });
     }
   }
 
